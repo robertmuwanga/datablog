@@ -1,5 +1,5 @@
 ---
-title: "DataBlog"
+title: "Homepage"
 listing:
   contents: posts
   sort: "date desc"
@@ -10,3 +10,11 @@ listing:
 page-layout: full
 title-block-banner: true
 ---
+
+# **Welcome to my blog!**
+
+Welcome to my blog. On this site, I shall be posting about different aspects of my work, life and hobbies that I feel will help others going through similar things on their own life journeys. It will be, for the most part, a bit of a journal helping me to put my thoughts on a "piece of paper".
+
+Do enjoy the works and if you want to link up, hit me up on Bluesky!
+
+------------------------------------------------------------------------

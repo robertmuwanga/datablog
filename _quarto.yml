@@ -2,18 +2,18 @@ project:
   type: website
 
 website:
-  title: "DataBlog"
+  title: "Ruminations of Another Analyst"
   navbar:
     right:
-      - about.qmd
+      #- about.qmd
       - icon: github
-        href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
+        href: https://github.com/robertmuwanga/
+      - text: "{{< iconify simple-icons bluesky >}}"
+        href: https://bsky.app/profile/muwanga.me
 format:
   html:
     theme:
-      - cosmo
+      - united
       - brand
     css: styles.css
 

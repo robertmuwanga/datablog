@@ -1,0 +1,68 @@
+---
+title: "How can OKRs Support Innovation Creation and Discovery?"
+author: "Robert Muwanga"
+date: "2025-05-18"
+categories: [performance,innovation]
+---
+
+A lot has been talked about when it comes to Objectives and Key Results (OKRs). Some see it as the "holy grail" to improving organisational performance, whilst others see it as "just another performance management tool". But, as a mental model, it works well in driving daily performance expectations, projects, and innovation discovery and creation.
+
+So, how can OKRs support innovation? Let's first understand briefly what OKRs are all about.
+
+OKRs can be seen as a performance management tool, but one that focuses on *goals* as a means to help guide an organisation, team or individual **align** towards delivering **measurable** and **impactful** outcomes. As one would notice, the words in **bold** are those typically used as pillars of innovative teams and activities.
+
+> **Objectives** state a concrete, action-oriented and inspirational desired state, whilst **Key Results** help define specific, time bound, aggressive but realistic, measurable and verifiable targets.
+
+Let's put it into context.
+
+As a typical example, consider a company that is embarking on making its way of doing business *sustainable and environmentally friendly*. As a consultancy company, it has recognised that its carbon footprint is quite high compared to other companies in its industry.
+
+It therefore creates a set of OKRs that can help the organisation start its journey towards this goal.
+
+| Objective | Create the lowest carbon footprint in the consultancy industry |
+|----|----|
+| Key Result 1 | Reduce the use of paper printing in its report development process by 90%. |
+| Key Result 2 | Reduce the company's energy use by 50%. |
+| Key Result 3 | Use 100% reusable or recyclable material for all client events. |
+
+As we can see, the **Objective** is concrete, action-oriented and inspirational, whilst its accompanying **Key Results** are specific and aggressive, but are measurable and verifiable. We can assume for this example that these are for the entire year (time bound).
+
+**How about innovation?**
+
+Not all organisations are the same when it comes to managing innovation. In my opinion, innovation should be **part** of how organisations do work as opposed to a "plug-in" where it comes in after the fact. Innovation should be embedded *implicitly* in the way organisations set out their strategy and goals, but rewarded *explicitly* to help drive the creative culture an organisation strives to have. A culture of innovation expedites the speed of an organisation in meeting its strategic goals and allows for new challenges to quickly come on-board.
+
+As an example, let's assume a Fintech is looking at adding Investments as a product line and sees building a savings culture with its customers as a potential strategy to increase its liquidity for investing. It therefore has "making savings a way of life" as a company-wide objective and identifies 3 key results that will define its success:
+
+| Objective | Make savings a way of life for its customers |
+|----|----|
+| Key Result 1 | Make its saving product the best performing product within 2 years in its portfolio. |
+| Key Result 2 | Make enrolment and use of the product as seamless as possible. |
+| Key Result 3 | At least 40% of its customer base should be enrolled onto the product by the end of the financial year. |
+
+The company's product and technology teams for this company decide to pick up on this new objective and create new team objectives that feed into Key Results 1 and 2 respectively.
+
+The product team may leverage on its design thinking approach to craft a set of key results that can enable the team identify a potentially new product for the company:
+
+| Objective | Create a saving product that is the best offering in the company's portfolio |
+|----|----|
+| Key Result 1 | Talk to 80 new and 50 existing customers by the end of January. |
+| Key Result 2 | Propose (at most) 3 pain points that could be solved by savings by the end of January. |
+| Key Result 3 | Test at least one high-fidelity potential prototype with at least 80 customers by the end of March. |
+| Key Result 4 | Present a viable product for scaling by 15 April. |
+
+The technology team for this company may craft OKRs aligned to the Key Result 2 as follows:
+
+| Objective | Build technology that enables a seamless customer saving experience by end of Q4 |
+|----|----|
+| Key Result 1 | Launch mobile app by by end of Q3. |
+| Key Result 2 | Enable real-time reporting on product adoption and usage by Q3. |
+| Key Result 3 | Scale infrastructure to support 1,000,000 customers by the end of Q4. |
+| Key Result 4 | Ensure 100% compliance to GDPR and related data protection laws. |
+
+These Key Results may be further broken down by teams within the technology department that may be in charge of software development, infrastructure support, information security and others.
+
+This is where the **alignment** of OKRs come into fruition - a pyramid of objectives and key results can be created across teams, each feeding into the other to ensure alignment to the overall strategic goal.
+
+OKRs define success and set ["what"]{.underline} needs to be accomplished, not ["how"]{.underline} it should be accomplished. This allows for teams to create initiatives that can meet the aggressive key results, the beauty being that teams will need to think differently and out-of-the-box to create really innovative solutions that can rise to these hard targets.
+
+If implemented well, OKRs could be the answer to many organisations looking to embed innovation as part of its culture. The only thing that remains is creating an ecosystem of knowledge and partners, and a recognition and rewards system that can empower, inspire and allow staff to try, fail, learn and innovate to their best!
