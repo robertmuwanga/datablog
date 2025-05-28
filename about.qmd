@@ -13,7 +13,12 @@ about:
     - icon: github
       text: Github
       href: https://github.com
-
 ---
 
-About this blog
+Welcome to my blog.
+
+On this site, I shall be posting about different aspects of my work, life and hobbies that I feel will help others going through similar things on their own life journeys. Although it may be heavily biased towards my learnings on data and analytics, it will also serve as a bit of a journal helping me to put my thoughts on a "piece of paper".
+
+Do enjoy the works and if you want to link up, hit me up on Bluesky!
+
+------------------------------------------------------------------------
