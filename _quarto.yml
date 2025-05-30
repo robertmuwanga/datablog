@@ -10,6 +10,14 @@ website:
         href: https://github.com/robertmuwanga/
       - text: "{{< iconify simple-icons bluesky >}}"
         href: https://bsky.app/profile/muwanga.me
+    cookie-consent:
+    type: express
+    style: headline
+    palette: dark
+  google-analytics:
+    tracking-id: "G-5PX1BEW0LT"
+    anonymize-ip: true
+
 format:
   html:
     theme:
