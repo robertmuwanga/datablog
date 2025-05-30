@@ -1,0 +1,162 @@
+---
+title: "Regex-ing in R"
+author: "Robert Muwanga"
+date: "2025-05-30"
+categories: [data-cleaning]
+draft: true
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(dplyr)
+library(tidyr)
+library(readr)
+library(here)
+library(gt)
+library(stringr)
+```
+
+## What is Regex?
+
+Regular Expressions, often shortened as **Regex**, is a powerful concept in modern programming languages for manipulating strings. A single line of code implementing a regex pattern can save several lines of code, keeping the overall codebase concise and easily maintainable.
+
+## So what does it do?
+
+It uses pattern matching to find 
+
+This article is focused on helping you understand what it means to have data in a tidy state.
+
+## Principles behind tidy data
+
+Data can be represented in several ways. Consider a simple dataset that shows a table of Series with their release date, genre, IMDB rating and director.
+
+Table 1 might looks like the following:
+
+```{r}
+#| label: Table1
+#| echo: false
+data |> gt()
+```
+
+Table 2, containing the same data, might look like this:
+
+```{r}
+#| label: Table2
+#| echo: false
+data |> 
+  mutate(
+    Series_Title_Rating = paste(Series_Title, IMDB_Rating, sep = " , "),
+    Release = Release,
+    Genre = Genre, 
+    Director = Director) |>
+  select(-Series_Title) |> 
+  gt()
+```
+
+Or Table 3 could be structured like this:
+
+```{r}
+#| label: Table3
+#| echo: false
+data |> 
+  mutate(
+    Series = Series_Title,
+    Details = paste(Director, Genre, Release, IMDB_Rating, sep = ' , ')
+  ) |>
+  select(c('Series', 'Details')) |>
+  gt()
+```
+
+In all these three instances, the data representation is perfectly valid but each one is harder to use in analysis (particularly the third table!)
+
+The first table is the easiest to use as it follows the three tidy principles:
+
+1.  Each column is a variable.
+2.  Each row is an observation.
+3.  Each cell (intersection between the column and row) is a **SINGLE** value.
+
+![A tidy data representation](tidy_data.png)
+
+These simple principles allows for data to be stored consistently, and allows for R to leverage on its vectorised approach processing data, i.e., a tidy function can perform the same transformation along a variable consistently if the data within that variable is the same.
+
+For example, converting the IMDB_rating variable in the first table to a percentage would be as simple as multiplying the variable by 10 (existing rating is out of 10):
+
+```{r}
+#| label: Table4
+#| echo: false
+data |> 
+  mutate(
+    IMDB_Rating = IMDB_Rating * 10
+  ) |>
+  gt()
+```
+
+## A Simple Example
+
+Let's take an example of how we might intuitively look at a dataset to determine if its "tidy-ness". Consider the following hypothetical table that is tracking student records at a local school.
+
+```{r}
+#| label: untidy-data
+#| echo: false
+#| 
+untidy_data <- tribble(
+  ~Name, ~StudentID, ~Age_and_Sex, ~Science_Score, ~Math_Score, ~English_Score,
+  "Robert", "S001", "18 M", "90", "95", "70",
+  "John", "S002", "15 M", "88", "79", "60",
+  "Jane", "S003", "17 F", "50", "50", "55",
+  "Abdul", "S004", "14 M", "70", "90", "100",
+  "Tracy", "S005", "16 F", "40", "100", "90"
+)
+
+untidy_data |> gt()
+```
+
+What do you notice? Based off the rules that we have, we have a couple of violations. Let's reflect this against the Tidy Principles:
+
+**1. Each column is a variable.**
+
+Although each column could be considered a variable, the context is wanting. Although Name and StudentID satisfy this rule, we can clearly see that the "Age_and_Sex" variables seems to represent two variables fused as one (Age and Sex).
+
+Also notice the variables for each subject score - Science_Score, Math_Score and English_Score. These variable names seem not to be variables but rather **values** masked as variables - Science, Math and English. In essence, these values should be put under a new variable with an appropriate variable name (e.g. Subject) and the values - the scores - put within a second variable with an appropriate variable name (e.g. Score).
+
+**2. Each row is an observation.**
+
+Although each row in essence is an observation, the placement of the values would need to change given the above rule violations. Implementing the above changes would reduce the "length" of each observation - the number of variables captured per observation would reduce from 6 per observation to just 4 (Name, StudentID, Subject, and Score).
+
+**3. Each cell (intersection between the column and row) is a SINGLE value.**
+
+It was evident that the "Age_And_Sex" column had two values instead of just a single value.
+
+Given the above principle violations, the "untidy" data would probably be best structured as follows in order satisfying each of the three Tidy Principles:
+
+```{r}
+#| label: tidy_data
+#| echo: false
+
+# untidy_data |> 
+#   separate_wider_delim(Age_and_Sex, delim = " ", names = c("Age", "Sex")) |> 
+#   rename_with(~ janitor::make_clean_names(string = .x, replace = c("_Score" = ""), case = "title")) |> 
+#   pivot_longer(-c('Name':'Sex'), names_to = "Subject", values_to = "Score") |> glimpse
+
+untidy_data |> 
+  separate_wider_delim(
+    Age_and_Sex, 
+    delim = " ", 
+    names = c('Age', 'Sex')) |> 
+  rename_with(
+    .cols = ends_with("_Score"), 
+    .fn = ~ str_extract(string = .x,pattern = "[a-z | A-Z]+")) |> 
+  pivot_longer(
+    cols = -c("Name":"Sex"), 
+    names_to = "Subject", 
+    values_to = "Score") |>
+  mutate_at(
+    vars(contains(c("Age", "Score"))), as.double) |> 
+  gt()
+```
+
+## Conclusion
+
+Focusing on cleaning one's data set into a tidy dataset helps to set one up for success, making it easier to use functions that comply with the tidy principles in one's analysis. It may take a bit of work to get it right but once its done appropriately, it is quite powerful.
