@@ -1,0 +1,15 @@
+{
+  "hash": "9897780f9d4e090225a1c9ce19384093",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"TidyTuesday - 2022 Week 41 [Ravelry Yarn]\"\nauthor: \"Robert Muwanga\"\ndate: \"2025-06-01\"\ncategories: [tidytuesday]\ndraft: true\n---\n\n\n\n\n\n## Ravelry Yarn\n\nThis week's tidytuesday dataset is provided by [Alice Walsh](https://github.com/awalsh17) who collected data from [ravelry.com](ravelry.com).\n\nRavelry is a free website for knitters, crocheters and fiber artists. The site hosts millions of yarn lovers from all over the world and provide personal notebooks for fiber artists to keep track of their projects, yarn and fibers, tools, and pattern library.\n\n## About the data\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nyarn <- tuesdata$yarn\n```\n:::\n\n\n\n## Conclusion\n\nFocusing on cleaning one's data set into a tidy dataset helps to set one up for success, making it easier to use functions that comply with the tidy principles in one's analysis. It may take a bit of work to get it right but once its done appropriately, it is quite powerful.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

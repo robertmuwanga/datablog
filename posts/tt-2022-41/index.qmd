@@ -1,0 +1,35 @@
+---
+title: "TidyTuesday - 2022 Week 41 [Ravelry Yarn]"
+author: "Robert Muwanga"
+date: "2025-06-01"
+categories: [tidytuesday]
+draft: true
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(tidyverse)
+theme_set(theme_minimal())
+
+# Get dataset
+tuesdata <- tidytuesdayR::tt_load(2022, week = 41)
+```
+
+## Ravelry Yarn
+
+This week's tidytuesday dataset is provided by [Alice Walsh](https://github.com/awalsh17) who collected data from [ravelry.com](ravelry.com).
+
+Ravelry is a free website for knitters, crocheters and fiber artists. The site hosts millions of yarn lovers from all over the world and provide personal notebooks for fiber artists to keep track of their projects, yarn and fibers, tools, and pattern library.
+
+## About the data
+
+```{r}
+yarn <- tuesdata$yarn
+
+```
+
+## Conclusion
+
+Focusing on cleaning one's data set into a tidy dataset helps to set one up for success, making it easier to use functions that comply with the tidy principles in one's analysis. It may take a bit of work to get it right but once its done appropriately, it is quite powerful.

@@ -67,6 +67,90 @@
     "href": "index.html",
     "title": "",
     "section": "",
-    "text": "What is tidy data?\n\n\n\n\n\n\ndata-cleaning\n\n\n\n\n\n\n\n\n\nMay 28, 2025\n\n\nRobert Muwanga\n\n\n\n\n\n\n\n\n\n\n\n\nHow can OKRs Support Innovation Creation and Discovery?\n\n\n\n\n\n\nperformance\n\n\ninnovation\n\n\n\n\n\n\n\n\n\nMay 18, 2025\n\n\nRobert Muwanga\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nMay 17, 2025\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nMay 14, 2025\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "What is tidy data?\n\n\n\n\n\n\ndata-cleaning\n\n\n\n\n\n\n\n\n\nMay 28, 2025\n\n\nRobert Muwanga\n\n\n\n\n\n\n\n\n\n\n\n\nHow can OKRs Support Innovation Creation and Discovery?\n\n\n\n\n\n\nperformance\n\n\ninnovation\n\n\n\n\n\n\n\n\n\nMay 18, 2025\n\n\nRobert Muwanga\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/intro-regex/index.html",
+    "href": "posts/intro-regex/index.html",
+    "title": "Regex-ing in R",
+    "section": "",
+    "text": "Regular Expressions, often shortened as Regex, is a powerful concept in modern programming languages for manipulating strings. A single line of code implementing a regex pattern can save several lines of code, keeping the overall codebase concise and easily maintainable."
+  },
+  {
+    "objectID": "posts/intro-regex/index.html#what-is-regex",
+    "href": "posts/intro-regex/index.html#what-is-regex",
+    "title": "Regex-ing in R",
+    "section": "",
+    "text": "Regular Expressions, often shortened as Regex, is a powerful concept in modern programming languages for manipulating strings. A single line of code implementing a regex pattern can save several lines of code, keeping the overall codebase concise and easily maintainable."
+  },
+  {
+    "objectID": "posts/intro-regex/index.html#so-what-does-it-do",
+    "href": "posts/intro-regex/index.html#so-what-does-it-do",
+    "title": "Regex-ing in R",
+    "section": "So what does it do?",
+    "text": "So what does it do?\nIt uses pattern matching to find…"
+  },
+  {
+    "objectID": "posts/intro-regex/index.html#conclusion",
+    "href": "posts/intro-regex/index.html#conclusion",
+    "title": "Regex-ing in R",
+    "section": "Conclusion",
+    "text": "Conclusion\nFocusing on cleaning one’s data set into a tidy dataset helps to set one up for success, making it easier to use functions that comply with the tidy principles in one’s analysis. It may take a bit of work to get it right but once its done appropriately, it is quite powerful."
+  },
+  {
+    "objectID": "posts/tt-2022-41/index.html",
+    "href": "posts/tt-2022-41/index.html",
+    "title": "TidyTuesday - 2022 Week 41 [Ravelry Yarn]",
+    "section": "",
+    "text": "This week’s tidytuesday dataset is provided by Alice Walsh who collected data from ravelry.com.\nRavelry is a free website for knitters, crocheters and fiber artists. The site hosts millions of yarn lovers from all over the world and provide personal notebooks for fiber artists to keep track of their projects, yarn and fibers, tools, and pattern library."
+  },
+  {
+    "objectID": "posts/tt-2022-41/index.html#ravelry-yarn",
+    "href": "posts/tt-2022-41/index.html#ravelry-yarn",
+    "title": "TidyTuesday - 2022 Week 41 [Ravelry Yarn]",
+    "section": "",
+    "text": "This week’s tidytuesday dataset is provided by Alice Walsh who collected data from ravelry.com.\nRavelry is a free website for knitters, crocheters and fiber artists. The site hosts millions of yarn lovers from all over the world and provide personal notebooks for fiber artists to keep track of their projects, yarn and fibers, tools, and pattern library."
+  },
+  {
+    "objectID": "posts/tt-2022-41/index.html#about-the-data",
+    "href": "posts/tt-2022-41/index.html#about-the-data",
+    "title": "TidyTuesday - 2022 Week 41 [Ravelry Yarn]",
+    "section": "About the data",
+    "text": "About the data\n\nyarn &lt;- tuesdata$yarn"
+  },
+  {
+    "objectID": "posts/tt-2022-41/index.html#conclusion",
+    "href": "posts/tt-2022-41/index.html#conclusion",
+    "title": "TidyTuesday - 2022 Week 41 [Ravelry Yarn]",
+    "section": "Conclusion",
+    "text": "Conclusion\nFocusing on cleaning one’s data set into a tidy dataset helps to set one up for success, making it easier to use functions that comply with the tidy principles in one’s analysis. It may take a bit of work to get it right but once its done appropriately, it is quite powerful."
+  },
+  {
+    "objectID": "posts/tt-2021-29/index.html",
+    "href": "posts/tt-2021-29/index.html",
+    "title": "TidyTuesday - 2021 Week 29 [Scooby Doo]",
+    "section": "",
+    "text": "This week’s tidytuesday dataset is provided by plummye who manually aggregated the Scooby Doo episode data, watching every Scooby-Doo iteration and tracking every variable."
+  },
+  {
+    "objectID": "posts/tt-2021-29/index.html#scooby-doo-episodes",
+    "href": "posts/tt-2021-29/index.html#scooby-doo-episodes",
+    "title": "TidyTuesday - 2021 Week 29 [Scooby Doo]",
+    "section": "",
+    "text": "This week’s tidytuesday dataset is provided by plummye who manually aggregated the Scooby Doo episode data, watching every Scooby-Doo iteration and tracking every variable."
+  },
+  {
+    "objectID": "posts/tt-2021-29/index.html#about-the-data",
+    "href": "posts/tt-2021-29/index.html#about-the-data",
+    "title": "TidyTuesday - 2021 Week 29 [Scooby Doo]",
+    "section": "About the data",
+    "text": "About the data\nThe has 603 observations across 75 variables, running from 1969-09-13 to 2021-02-25.\n\nscooby &lt;- tuesdata$scoobydoo\nscooby\n\n# A tibble: 603 × 75\n   index series_name   network season title imdb  engagement date_aired run_time\n   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;      &lt;date&gt;        &lt;dbl&gt;\n 1     1 Scooby Doo, … CBS     1      What… 8.1   556        1969-09-13       21\n 2     2 Scooby Doo, … CBS     1      A Cl… 8.1   479        1969-09-20       22\n 3     3 Scooby Doo, … CBS     1      Hass… 8     455        1969-09-27       21\n 4     4 Scooby Doo, … CBS     1      Mine… 7.8   426        1969-10-04       21\n 5     5 Scooby Doo, … CBS     1      Deco… 7.5   391        1969-10-11       21\n 6     6 Scooby Doo, … CBS     1      What… 8.4   384        1969-10-18       21\n 7     7 Scooby Doo, … CBS     1      Neve… 7.6   358        1969-10-25       21\n 8     8 Scooby Doo, … CBS     1      Foul… 8.2   358        1969-11-01       21\n 9     9 Scooby Doo, … CBS     1      The … 8.1   371        1969-11-08       21\n10    10 Scooby Doo, … CBS     1      Bedl… 8     346        1969-11-15       21\n# ℹ 593 more rows\n# ℹ 66 more variables: format &lt;chr&gt;, monster_name &lt;chr&gt;, monster_gender &lt;chr&gt;,\n#   monster_type &lt;chr&gt;, monster_subtype &lt;chr&gt;, monster_species &lt;chr&gt;,\n#   monster_real &lt;chr&gt;, monster_amount &lt;dbl&gt;, caught_fred &lt;chr&gt;,\n#   caught_daphnie &lt;chr&gt;, caught_velma &lt;chr&gt;, caught_shaggy &lt;chr&gt;,\n#   caught_scooby &lt;chr&gt;, captured_fred &lt;chr&gt;, captured_daphnie &lt;chr&gt;,\n#   captured_velma &lt;chr&gt;, captured_shaggy &lt;chr&gt;, captured_scooby &lt;chr&gt;, …"
+  },
+  {
+    "objectID": "posts/tt-2021-29/index.html#conclusion",
+    "href": "posts/tt-2021-29/index.html#conclusion",
+    "title": "TidyTuesday - 2021 Week 29 [Scooby Doo]",
+    "section": "Conclusion",
+    "text": "Conclusion\nFocusing on cleaning one’s data set into a tidy dataset helps to set one up for success, making it easier to use functions that comply with the tidy principles in one’s analysis. It may take a bit of work to get it right but once its done appropriately, it is quite powerful."
   }
 ]
