@@ -1,0 +1,36 @@
+---
+title: "TidyTuesday - 2021 Week 29 [Scooby Doo]"
+author: "Robert Muwanga"
+date: "2025-06-01"
+categories: [tidytuesday]
+draft: true
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(tidyverse)
+theme_set(theme_minimal())
+
+# Get dataset
+tuesdata <- tidytuesdayR::tt_load(2021, week = 29)
+scooby <- tuesdata$scoobydoo
+```
+
+## Scooby Doo Episodes
+
+This week's tidytuesday dataset is provided by [plummye](https://www.kaggle.com/williamscooleman) who manually aggregated the Scooby Doo episode data, watching every Scooby-Doo iteration and tracking every variable.
+
+## About the data
+
+The has `r nrow(scooby)` observations across `r ncol(scooby)` variables, running from `r min(scooby$date_aired)` to `r max(scooby$date_aired)`.
+
+```{r}
+scooby <- tuesdata$scoobydoo
+scooby
+```
+
+## Conclusion
+
+Focusing on cleaning one's data set into a tidy dataset helps to set one up for success, making it easier to use functions that comply with the tidy principles in one's analysis. It may take a bit of work to get it right but once its done appropriately, it is quite powerful.

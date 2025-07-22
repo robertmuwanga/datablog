@@ -1,8 +1,15 @@
 {
+<<<<<<< HEAD
   "hash": "74cd6a75a4316692a079232b6067f472",
   "result": {
     "engine": "knitr",
     "markdown": "---\ntitle: \"Regex-ing in R\"\nauthor: \"Robert Muwanga\"\ndate: \"2025-05-30\"\ncategories: [data-cleaning]\ndraft: true\n---\n\n\n\n\n\n## What is Regex?\n\nRegular Expressions, often shortened as **Regex**, is a powerful concept in modern programming languages for manipulating strings. A single line of code implementing a regex pattern can save several lines of code, keeping the overall codebase concise and easily maintainable.\n\n## So what does it do?\n\nIt uses pattern matching to find \\[TBD\\]...\n\n## \\[Title\\]\n\nTBD\n\n## Conclusion\n",
+=======
+  "hash": "e635f363380fcd907e4f9a843363993a",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Regex-ing in R\"\nauthor: \"Robert Muwanga\"\ndate: \"2025-05-30\"\ncategories: [data-cleaning]\ndraft: true\n---\n\n\n\n\n\n## What is Regex?\n\nRegular Expressions, often shortened as **Regex**, is a powerful concept in modern programming languages for manipulating strings. A single line of code implementing a regex pattern can save several lines of code, keeping the overall codebase concise and easily maintainable.\n\n## So what does it do?\n\nIt uses pattern matching to find...\n\n## Conclusion\n\nFocusing on cleaning one's data set into a tidy dataset helps to set one up for success, making it easier to use functions that comply with the tidy principles in one's analysis. It may take a bit of work to get it right but once its done appropriately, it is quite powerful.\n",
+>>>>>>> 5f5e500f48b3ec108deae015b895118b9d0c4125
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

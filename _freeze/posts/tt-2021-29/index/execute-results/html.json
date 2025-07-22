@@ -1,0 +1,15 @@
+{
+  "hash": "7daa0346ababeb282f9d12b5bde51ad4",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"TidyTuesday - 2021 Week 29 [Scooby Doo]\"\nauthor: \"Robert Muwanga\"\ndate: \"2025-06-01\"\ncategories: [tidytuesday]\ndraft: true\n---\n\n\n\n\n\n## Scooby Doo Episodes\n\nThis week's tidytuesday dataset is provided by [plummye](https://www.kaggle.com/williamscooleman) who manually aggregated the Scooby Doo episode data, watching every Scooby-Doo iteration and tracking every variable.\n\n## About the data\n\nThe has 603 observations across 75 variables, running from 1969-09-13 to 2021-02-25.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nscooby <- tuesdata$scoobydoo\nscooby\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n# A tibble: 603 × 75\n   index series_name   network season title imdb  engagement date_aired run_time\n   <dbl> <chr>         <chr>   <chr>  <chr> <chr> <chr>      <date>        <dbl>\n 1     1 Scooby Doo, … CBS     1      What… 8.1   556        1969-09-13       21\n 2     2 Scooby Doo, … CBS     1      A Cl… 8.1   479        1969-09-20       22\n 3     3 Scooby Doo, … CBS     1      Hass… 8     455        1969-09-27       21\n 4     4 Scooby Doo, … CBS     1      Mine… 7.8   426        1969-10-04       21\n 5     5 Scooby Doo, … CBS     1      Deco… 7.5   391        1969-10-11       21\n 6     6 Scooby Doo, … CBS     1      What… 8.4   384        1969-10-18       21\n 7     7 Scooby Doo, … CBS     1      Neve… 7.6   358        1969-10-25       21\n 8     8 Scooby Doo, … CBS     1      Foul… 8.2   358        1969-11-01       21\n 9     9 Scooby Doo, … CBS     1      The … 8.1   371        1969-11-08       21\n10    10 Scooby Doo, … CBS     1      Bedl… 8     346        1969-11-15       21\n# ℹ 593 more rows\n# ℹ 66 more variables: format <chr>, monster_name <chr>, monster_gender <chr>,\n#   monster_type <chr>, monster_subtype <chr>, monster_species <chr>,\n#   monster_real <chr>, monster_amount <dbl>, caught_fred <chr>,\n#   caught_daphnie <chr>, caught_velma <chr>, caught_shaggy <chr>,\n#   caught_scooby <chr>, captured_fred <chr>, captured_daphnie <chr>,\n#   captured_velma <chr>, captured_shaggy <chr>, captured_scooby <chr>, …\n```\n\n\n:::\n:::\n\n\n\n## Conclusion\n\nFocusing on cleaning one's data set into a tidy dataset helps to set one up for success, making it easier to use functions that comply with the tidy principles in one's analysis. It may take a bit of work to get it right but once its done appropriately, it is quite powerful.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
