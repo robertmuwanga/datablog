@@ -67,11 +67,7 @@
     "href": "index.html",
     "title": "",
     "section": "",
-<<<<<<< HEAD
-    "text": "Data Cleaning Series :: Exploring Social Media Addiction Data\n\n\n\n\n\n\ndata-cleaning\n\n\ndata-exploration\n\n\n\n\n\n\n\n\n\nJul 22, 2025\n\n\nRobert Muwanga\n\n\n\n\n\n\n\n\n\n\n\n\nRegex-ing in R\n\n\n\n\n\n\ndata-cleaning\n\n\n\n\n\n\n\n\n\nMay 30, 2025\n\n\nRobert Muwanga\n\n\n\n\n\n\n\n\n\n\n\n\nWhat is tidy data?\n\n\n\n\n\n\ndata-cleaning\n\n\n\n\n\n\n\n\n\nMay 28, 2025\n\n\nRobert Muwanga\n\n\n\n\n\n\n\n\n\n\n\n\nHow can OKRs Support Innovation Creation and Discovery?\n\n\n\n\n\n\nperformance\n\n\ninnovation\n\n\n\n\n\n\n\n\n\nMay 18, 2025\n\n\nRobert Muwanga\n\n\n\n\n\n\nNo matching items"
-=======
     "text": "What is tidy data?\n\n\n\n\n\n\ndata-cleaning\n\n\n\n\n\n\n\n\n\nMay 28, 2025\n\n\nRobert Muwanga\n\n\n\n\n\n\n\n\n\n\n\n\nHow can OKRs Support Innovation Creation and Discovery?\n\n\n\n\n\n\nperformance\n\n\ninnovation\n\n\n\n\n\n\n\n\n\nMay 18, 2025\n\n\nRobert Muwanga\n\n\n\n\n\n\nNo matching items"
->>>>>>> 5f5e500f48b3ec108deae015b895118b9d0c4125
   },
   {
     "objectID": "posts/intro-regex/index.html",
@@ -92,7 +88,6 @@
     "href": "posts/intro-regex/index.html#so-what-does-it-do",
     "title": "Regex-ing in R",
     "section": "So what does it do?",
-<<<<<<< HEAD
     "text": "So what does it do?\nIt uses pattern matching to find [TBD]…"
   },
   {
@@ -101,16 +96,12 @@
     "title": "Regex-ing in R",
     "section": "[Title]",
     "text": "[Title]\nTBD"
-=======
-    "text": "So what does it do?\nIt uses pattern matching to find…"
->>>>>>> 5f5e500f48b3ec108deae015b895118b9d0c4125
   },
   {
     "objectID": "posts/intro-regex/index.html#conclusion",
     "href": "posts/intro-regex/index.html#conclusion",
     "title": "Regex-ing in R",
     "section": "Conclusion",
-<<<<<<< HEAD
     "text": "Conclusion"
   },
   {
@@ -133,64 +124,5 @@
     "title": "Data Cleaning Series :: Exploring Social Media Addiction Data",
     "section": "About the dataset - Social Media Addiction Analysis",
     "text": "About the dataset - Social Media Addiction Analysis\nFor this exercise, we are leveraging on the Social Media Addiction dataset provided by Anil Shamim from the Kaggle Platform.\nThe data set is a set of anonymized records of students’ social media behaviors and related life outcomes, spanning multiple countries and background. Each row represents one student’s survey response, offering a cross‐sectional snapshot suitable for statistical analysis and machine‐learning applications.\nFor full details of the dataset, I would encourage you to visit the site and view its Data Card.\nMake sure you download the data set and save it on your machine (you might need a free Kaggle account to get it).\nLet’s import it in and do a bit of exploration to get to know it better:\n\nsocial_media_data &lt;- read_csv('Students_Social_Media_Addiction.csv')\n\nRows: 705 Columns: 13\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (6): Gender, Academic_Level, Country, Most_Used_Platform, Affects_Academ...\ndbl (7): Student_ID, Age, Avg_Daily_Usage_Hours, Sleep_Hours_Per_Night, Ment...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nsocial_media_data\n\n# A tibble: 705 × 13\n   Student_ID   Age Gender Academic_Level Country     Avg_Daily_Usage_Hours\n        &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;          &lt;chr&gt;                       &lt;dbl&gt;\n 1          1    19 Female Undergraduate  Bangladesh                    5.2\n 2          2    22 Male   Graduate       India                         2.1\n 3          3    20 Female Undergraduate  USA                           6  \n 4          4    18 Male   High School    UK                            3  \n 5          5    21 Male   Graduate       Canada                        4.5\n 6          6    19 Female Undergraduate  Australia                     7.2\n 7          7    23 Male   Graduate       Germany                       1.5\n 8          8    20 Female Undergraduate  Brazil                        5.8\n 9          9    18 Male   High School    Japan                         4  \n10         10    21 Female Graduate       South Korea                   3.3\n# ℹ 695 more rows\n# ℹ 7 more variables: Most_Used_Platform &lt;chr&gt;,\n#   Affects_Academic_Performance &lt;chr&gt;, Sleep_Hours_Per_Night &lt;dbl&gt;,\n#   Mental_Health_Score &lt;dbl&gt;, Relationship_Status &lt;chr&gt;,\n#   Conflicts_Over_Social_Media &lt;dbl&gt;, Addicted_Score &lt;dbl&gt;\n\n\nFrom the output, we notice that the dataset has 705 variables and 13 observations. Given that we have the Data Caard that outlines the expected values for each variable, we can validate the information to make sure that it conforms to what was expected:\n\n# Let's build the validation engine based on the rules on the Data Card.\nvalidation_rules &lt;- validator(\n  is_unique(Student_ID), \n  Age &gt; 0, \n  Gender %in% c(\"Male\", \"Female\"), \n  Academic_Level %in% c(\"High School\", \"Undergraduate\", \"Graduate\"), \n  in_range(Avg_Daily_Usage_Hours, 0, 24),\n  Affects_Academic_Performance %in% c(\"Yes\", \"No\"),\n  Sleep_Hours_Per_Night &gt; 0,\n  in_range(Mental_Health_Score, 1, 10),\n  Relationship_Status %in% c(\"Single\", \"In Relationship\", \"Complicated\"),\n  Conflicts_Over_Social_Media &gt;= 0,\n  in_range(Addicted_Score, 1, 10),\n  is.character(Country), \n  is.character(Most_Used_Platform)\n)\n\n# Let's validate and assess the output.\nconfront(social_media_data, validation_rules)\n\nObject of class 'validation'\nCall:\n    confront(dat = social_media_data, x = validation_rules)\n\nRules confronted: 13\n   With fails   : 0\n   With missings: 0\n   Threw warning: 0\n   Threw error  : 0\n\n\nFrom the output, it is clear that all the variables satisfy the set constraints. However, as a sanity check for Country and Most_Used_Platform, let’s print out their unique values to see whether they are a good representation of what currently exists:\n\n# Let's just view the unique value of the Country variable\n\nsocial_media_data |&gt; \n  select(Country) |&gt; \n  unique() |&gt; \n  pull()\n\n  [1] \"Bangladesh\"      \"India\"           \"USA\"             \"UK\"             \n  [5] \"Canada\"          \"Australia\"       \"Germany\"         \"Brazil\"         \n  [9] \"Japan\"           \"South Korea\"     \"France\"          \"Spain\"          \n [13] \"Italy\"           \"Mexico\"          \"Russia\"          \"China\"          \n [17] \"Sweden\"          \"Norway\"          \"Denmark\"         \"Netherlands\"    \n [21] \"Belgium\"         \"Switzerland\"     \"Austria\"         \"Portugal\"       \n [25] \"Greece\"          \"Ireland\"         \"New Zealand\"     \"Singapore\"      \n [29] \"Malaysia\"        \"Thailand\"        \"Vietnam\"         \"Philippines\"    \n [33] \"Indonesia\"       \"Taiwan\"          \"Hong Kong\"       \"Turkey\"         \n [37] \"Israel\"          \"UAE\"             \"Egypt\"           \"Morocco\"        \n [41] \"South Africa\"    \"Nigeria\"         \"Kenya\"           \"Ghana\"          \n [45] \"Argentina\"       \"Chile\"           \"Colombia\"        \"Peru\"           \n [49] \"Venezuela\"       \"Ecuador\"         \"Uruguay\"         \"Paraguay\"       \n [53] \"Bolivia\"         \"Costa Rica\"      \"Panama\"          \"Jamaica\"        \n [57] \"Trinidad\"        \"Bahamas\"         \"Iceland\"         \"Finland\"        \n [61] \"Poland\"          \"Romania\"         \"Hungary\"         \"Czech Republic\" \n [65] \"Slovakia\"        \"Croatia\"         \"Serbia\"          \"Slovenia\"       \n [69] \"Bulgaria\"        \"Estonia\"         \"Latvia\"          \"Lithuania\"      \n [73] \"Ukraine\"         \"Moldova\"         \"Belarus\"         \"Kazakhstan\"     \n [77] \"Uzbekistan\"      \"Kyrgyzstan\"      \"Tajikistan\"      \"Armenia\"        \n [81] \"Georgia\"         \"Azerbaijan\"      \"Cyprus\"          \"Malta\"          \n [85] \"Luxembourg\"      \"Monaco\"          \"Andorra\"         \"San Marino\"     \n [89] \"Vatican City\"    \"Liechtenstein\"   \"Montenegro\"      \"Albania\"        \n [93] \"North Macedonia\" \"Kosovo\"          \"Bosnia\"          \"Qatar\"          \n [97] \"Kuwait\"          \"Bahrain\"         \"Oman\"            \"Jordan\"         \n[101] \"Lebanon\"         \"Iraq\"            \"Yemen\"           \"Syria\"          \n[105] \"Afghanistan\"     \"Pakistan\"        \"Nepal\"           \"Bhutan\"         \n[109] \"Sri Lanka\"       \"Maldives\"       \n\n\n\n# Let's just view the unique values of Most_Used_Platform variable\n\nsocial_media_data |&gt; \n  select(Most_Used_Platform) |&gt; \n  unique() |&gt; \n  pull()\n\n [1] \"Instagram\" \"Twitter\"   \"TikTok\"    \"YouTube\"   \"Facebook\"  \"LinkedIn\" \n [7] \"Snapchat\"  \"LINE\"      \"KakaoTalk\" \"VKontakte\" \"WhatsApp\"  \"WeChat\"   \n\n\nWe can see that both outputs seem reasonable. Additional data cleaning may be needed but we shall further clean as part of answering the questions.\nLet’s proceed to answering the questions!\n\nQuestion 1\n\nWhat is the total number of male and female students by country?\n\nsocial_media_data |&gt; \n  summarise(total = n(), .by = Gender) |&gt; \n  mutate(\n    perc_gender = round(\n      total / sum(total) * 100, 2))\n\n# A tibble: 2 × 3\n  Gender total perc_gender\n  &lt;chr&gt;  &lt;int&gt;       &lt;dbl&gt;\n1 Female   353        50.1\n2 Male     352        49.9\n\n\nWe can see that its an almost equal split between the Female and the Male gender - 50.07% against 49.93% respectively.\n\n\n\nQuestion 2\n\nWhich social media platform is associated with affecting the largest number of students by Academic Level?\n\n\n\nQuestion 3\n\nShow a table of countries showing the average sleep of High School students ordered from the least amount of sleep to the most.\n\n\n\nQuestion 4\n\nFind the average addiction score for each country. Include the country’s respective continent and order the table in descending order by the country’s average addiction score\n\n\n\nQuestion 5\n\nWhich gender per country and continent is the most lonely? Assume “being lonely” are those in a relationship status of “Single” and “Complicated”.\n\n\n\nQuestion 6\n\nWhich capital city (and country) has the most number of students “In Relationship”?\n\n\n\nQuestion 7\n\nDetermine the most popular social media platform in each country and continent"
-=======
-    "text": "Conclusion\nFocusing on cleaning one’s data set into a tidy dataset helps to set one up for success, making it easier to use functions that comply with the tidy principles in one’s analysis. It may take a bit of work to get it right but once its done appropriately, it is quite powerful."
-  },
-  {
-    "objectID": "posts/tt-2022-41/index.html",
-    "href": "posts/tt-2022-41/index.html",
-    "title": "TidyTuesday - 2022 Week 41 [Ravelry Yarn]",
-    "section": "",
-    "text": "This week’s tidytuesday dataset is provided by Alice Walsh who collected data from ravelry.com.\nRavelry is a free website for knitters, crocheters and fiber artists. The site hosts millions of yarn lovers from all over the world and provide personal notebooks for fiber artists to keep track of their projects, yarn and fibers, tools, and pattern library."
-  },
-  {
-    "objectID": "posts/tt-2022-41/index.html#ravelry-yarn",
-    "href": "posts/tt-2022-41/index.html#ravelry-yarn",
-    "title": "TidyTuesday - 2022 Week 41 [Ravelry Yarn]",
-    "section": "",
-    "text": "This week’s tidytuesday dataset is provided by Alice Walsh who collected data from ravelry.com.\nRavelry is a free website for knitters, crocheters and fiber artists. The site hosts millions of yarn lovers from all over the world and provide personal notebooks for fiber artists to keep track of their projects, yarn and fibers, tools, and pattern library."
-  },
-  {
-    "objectID": "posts/tt-2022-41/index.html#about-the-data",
-    "href": "posts/tt-2022-41/index.html#about-the-data",
-    "title": "TidyTuesday - 2022 Week 41 [Ravelry Yarn]",
-    "section": "About the data",
-    "text": "About the data\n\nyarn &lt;- tuesdata$yarn"
-  },
-  {
-    "objectID": "posts/tt-2022-41/index.html#conclusion",
-    "href": "posts/tt-2022-41/index.html#conclusion",
-    "title": "TidyTuesday - 2022 Week 41 [Ravelry Yarn]",
-    "section": "Conclusion",
-    "text": "Conclusion\nFocusing on cleaning one’s data set into a tidy dataset helps to set one up for success, making it easier to use functions that comply with the tidy principles in one’s analysis. It may take a bit of work to get it right but once its done appropriately, it is quite powerful."
-  },
-  {
-    "objectID": "posts/tt-2021-29/index.html",
-    "href": "posts/tt-2021-29/index.html",
-    "title": "TidyTuesday - 2021 Week 29 [Scooby Doo]",
-    "section": "",
-    "text": "This week’s tidytuesday dataset is provided by plummye who manually aggregated the Scooby Doo episode data, watching every Scooby-Doo iteration and tracking every variable."
-  },
-  {
-    "objectID": "posts/tt-2021-29/index.html#scooby-doo-episodes",
-    "href": "posts/tt-2021-29/index.html#scooby-doo-episodes",
-    "title": "TidyTuesday - 2021 Week 29 [Scooby Doo]",
-    "section": "",
-    "text": "This week’s tidytuesday dataset is provided by plummye who manually aggregated the Scooby Doo episode data, watching every Scooby-Doo iteration and tracking every variable."
-  },
-  {
-    "objectID": "posts/tt-2021-29/index.html#about-the-data",
-    "href": "posts/tt-2021-29/index.html#about-the-data",
-    "title": "TidyTuesday - 2021 Week 29 [Scooby Doo]",
-    "section": "About the data",
-    "text": "About the data\nThe has 603 observations across 75 variables, running from 1969-09-13 to 2021-02-25.\n\nscooby &lt;- tuesdata$scoobydoo\nscooby\n\n# A tibble: 603 × 75\n   index series_name   network season title imdb  engagement date_aired run_time\n   &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;      &lt;date&gt;        &lt;dbl&gt;\n 1     1 Scooby Doo, … CBS     1      What… 8.1   556        1969-09-13       21\n 2     2 Scooby Doo, … CBS     1      A Cl… 8.1   479        1969-09-20       22\n 3     3 Scooby Doo, … CBS     1      Hass… 8     455        1969-09-27       21\n 4     4 Scooby Doo, … CBS     1      Mine… 7.8   426        1969-10-04       21\n 5     5 Scooby Doo, … CBS     1      Deco… 7.5   391        1969-10-11       21\n 6     6 Scooby Doo, … CBS     1      What… 8.4   384        1969-10-18       21\n 7     7 Scooby Doo, … CBS     1      Neve… 7.6   358        1969-10-25       21\n 8     8 Scooby Doo, … CBS     1      Foul… 8.2   358        1969-11-01       21\n 9     9 Scooby Doo, … CBS     1      The … 8.1   371        1969-11-08       21\n10    10 Scooby Doo, … CBS     1      Bedl… 8     346        1969-11-15       21\n# ℹ 593 more rows\n# ℹ 66 more variables: format &lt;chr&gt;, monster_name &lt;chr&gt;, monster_gender &lt;chr&gt;,\n#   monster_type &lt;chr&gt;, monster_subtype &lt;chr&gt;, monster_species &lt;chr&gt;,\n#   monster_real &lt;chr&gt;, monster_amount &lt;dbl&gt;, caught_fred &lt;chr&gt;,\n#   caught_daphnie &lt;chr&gt;, caught_velma &lt;chr&gt;, caught_shaggy &lt;chr&gt;,\n#   caught_scooby &lt;chr&gt;, captured_fred &lt;chr&gt;, captured_daphnie &lt;chr&gt;,\n#   captured_velma &lt;chr&gt;, captured_shaggy &lt;chr&gt;, captured_scooby &lt;chr&gt;, …"
-  },
-  {
-    "objectID": "posts/tt-2021-29/index.html#conclusion",
-    "href": "posts/tt-2021-29/index.html#conclusion",
-    "title": "TidyTuesday - 2021 Week 29 [Scooby Doo]",
-    "section": "Conclusion",
-    "text": "Conclusion\nFocusing on cleaning one’s data set into a tidy dataset helps to set one up for success, making it easier to use functions that comply with the tidy principles in one’s analysis. It may take a bit of work to get it right but once its done appropriately, it is quite powerful."
->>>>>>> 5f5e500f48b3ec108deae015b895118b9d0c4125
   }
 ]
