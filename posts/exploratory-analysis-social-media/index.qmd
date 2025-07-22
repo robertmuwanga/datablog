@@ -98,7 +98,24 @@ social_media_data |>
 
 ```
 
-We can see that both outputs seem reasonable. Additional data cleaning may be needed but we shall further clean as part of answering the questions.
+We can see that both outputs seem reasonable.
+
+From the data, we can also infer that Academic_Level is an **ordered factor variable.** Although not necessary for this exercise, it aids the presentation to have results using this variable in a chronological order. Let's fix this:
+
+```{r}
+#| label: Factorising Academic Level
+#| echo: true
+
+social_media_data <- social_media_data |> 
+  mutate(
+    Academic_Level = fct(Academic_Level, 
+                         levels = c("High School", "Undergraduate", "Graduate"))
+  )
+  
+glimpse(social_media_data)
+```
+
+Additional data cleaning may be needed but we shall further clean as part of answering the questions.
 
 Let's proceed to answering the questions!
 
@@ -127,27 +144,129 @@ We can see that its an almost equal split between the Female and the Male gender
 #| label: Question 2
 #| echo: true
 
+social_media_data |> 
+  group_by(Academic_Level, Most_Used_Platform) |> 
+  summarise(
+    count = n()) |> 
+  arrange(
+    desc(count)) |> # Data is still grouped allowing us to order each group by the count
+  slice_head(n = 1) |> 
+  ungroup() # Remove groupings. Although not necessary at this point, its a good habit.
+  
 ```
+
+Given that we ordered the factors for Academic Level, we can see that its chronologically ordered in the output. We notice that two social media platforms stand out as popular - *Instagram* for High School and Undergraduate, and *Facebook* for Graduate.
 
 ### Question 3
 
-#### Show a table of countries showing the average sleep of High School students ordered from the least amount of sleep to the most.
+#### Show a table of countries showing the average sleep hours per night of High School students, with countries ordered from the least amount of sleep to the most.
 
 ```{r}
 #| label: Question 3
 #| echo: true
 
+social_media_data |> 
+  filter(Academic_Level == "High School") |> 
+  select(Country, Sleep_Hours_Per_Night) |> 
+  summarise(Avg_Sleep_Hours = mean(Sleep_Hours_Per_Night), 
+            .by = Country) |> 
+  arrange(Avg_Sleep_Hours)
 ```
+
+From the results, we can see that the UAE has the lowest average sleep per night at only 5.1 hours.
 
 ### Question 4
 
 #### Find the average addiction score for each country. Include the country's respective continent and order the table in descending order by the country's average addiction score
 
+This is an interesting problem. Given that the dataset requires continents, we will need another dataset having a listing of countries in their respective continent, and then perform a join in order to allow us find the average addiction score per country with their respective continent.
+
+Rather than manually creating the file, we will scour the internet to find a dataset that is relatively up-to-date and reliable and import it into our environment.
+
 ```{r}
 #| label: Question 4
 #| echo: true
 
+# Let's first download the continent dataset and extract the columns of interest
+# (we will also extract the Capital column as this is needed for Question 6)
+
+countries_continents <- 
+  read_delim(
+    file = 'https://www.countrycode.org/countryCode/downloadCountryCodes', 
+    col_select = c("Country Name", "Continent", "Capital"), 
+    delim = ',') |>
+  janitor::clean_names()
+
+# Let's see whether there are any countries from our social media dataset that is missing from our continent dataset
+
+social_media_data |> 
+  anti_join(
+    countries_continents, 
+    join_by(Country == country_name)) |> 
+  select(Country) |> 
+  unique()
 ```
+
+Form the output, we can see that there are 7 countries that exist in our social media dataset that do not match our continent dataset. In principle, these countries do exist but possibly in a different structure.
+
+Let's see whether we can find them.
+
+```{r}
+countries_continents |>
+  select(country_name) |> 
+  mutate(
+    found = str_detect(
+      string = country_name, 
+      pattern = "United|Trinidad|Vatican|Macedonia|Bosnia")
+  ) |> 
+  filter(found)
+```
+
+This proved our hypothesis that the countries did indeed exist in our continent dataset but under a different name. Now that we know what names they are written in, we can clean our social media dataset to match the appropriate names so that our joins work properly.
+
+```{r}
+# Let's manually clean up those countries in our social media dataset
+# so that they match our continent dataset. 
+
+social_media_data <- social_media_data |>
+  mutate(
+    Country = case_when(
+      str_detect(Country, "USA") ~ "United States",
+      str_detect(Country, "UK") ~ "United Kingdom", 
+      str_detect(Country, "UAE") ~ "United Arab Emirates", 
+      str_detect(Country, "Vatican City") ~ "Vatican",
+      str_detect(Country, "North Macedonia") ~ "Macedonia", 
+      str_detect(Country, "Trinidad") ~ "Trinidad and Tobago", 
+      str_detect(Country, "Bosnia") ~ "Bosnia and Herzegovina", 
+      TRUE ~ Country
+    ))
+
+# Let's see whether the countries have been replaced
+
+social_media_data |> 
+  select(Country) |> 
+  arrange(Country) |>
+  unique() |> 
+  pull()
+    
+```
+
+From the list, we can see that they have been appropriately replaced.
+
+Let's now do our join and effectively answer the question.
+
+```{r}
+social_media_data |> 
+  left_join(countries_continents, join_by(Country == country_name)) |>
+  select(continent, Country, Addicted_Score) |> 
+  summarise(
+    avg_addicted_score = round(mean(Addicted_Score), 2), 
+    .by = c(continent, Country)) |> 
+  arrange(desc(avg_addicted_score))
+
+```
+
+From the list, we can see that the countries with the highest average addiction score (9.0) include Ecuador (South America), Czech Republic (Europe), Armenia (Asia) and Liechtenstein (Europe).
 
 ### Question 5
 
@@ -157,17 +276,86 @@ We can see that its an almost equal split between the Female and the Male gender
 #| label: Question 5
 #| echo: true
 
+social_media_data |> 
+  select(
+    Country, Gender, Relationship_Status) |> 
+  filter(
+    # Only focusing on Single and Complicated Relationships
+    Relationship_Status %in% c("Single", "Complicated")) |>
+  summarise(
+    # Count the number of respondents by Country and Gender
+    total = n(),
+    .by = c("Country", "Gender")) |> 
+  mutate(
+    # Not necessary but its good to see what % of men and women per country are within 
+    # this relationship status grouping
+    perc_total = total / sum(total) * 100, 
+    .by = Country
+  ) |> 
+  filter(
+    # Filter the gender having the largest number of singles and complicated relationships
+    # in each Country.
+    total == max(total), 
+    .by = Country) |> 
+  left_join(
+    # And let's get the continent information into the final result.
+    countries_continents, 
+    join_by(
+      Country == country_name)) |> 
+  select(
+    # Select what we need to see
+    continent, Country, Gender, total, perc_total) |> 
+  arrange(desc(total)) # And order the results by number of individuals
 ```
+
+From the data, we can see that Canadian men are more lonely than their women counterparts, with approximately 9 in 10 identifying as Single or in a Complicated relationship.
+
+This is followed by Ireland and Spain in 2nd and 3rd place with Women identifying as Single or in a Complicated relationship (consituting approximately 85% of the respondents from each of those countries).
 
 ### Question 6
 
 #### Which capital city (and country) has the most number of students "In Relationship"?
 
+We can leverage the same thought process as in Question 5, but tweak it slightly.
+
+**PS:** For the enlightened, this would probably constitute the need for a function to avoid duplicated code but we shall cross that bridge in another write-up!
+
 ```{r}
 #| label: Question 6
 #| echo: true
 
+social_media_data |> 
+  select(
+    Country, Gender, Relationship_Status) |> 
+  filter(
+    # THE FIRST TWEAK! Changing the relationship type
+    Relationship_Status %in% c("In Relationship")) |>
+  summarise(
+    # Count the number of respondents by Country and Gender
+    total = n(),
+    .by = c("Country", "Gender")) |> 
+  mutate(
+    # Not necessary but its good to see what % of men and women per country are within 
+    # this relationship status grouping
+    perc_total = total / sum(total) * 100, 
+    .by = Country
+  ) |> 
+  filter(
+    # Filter the gender having the largest number of singles and complicated relationships
+    # in each Country.
+    total == max(total), 
+    .by = Country) |> 
+  left_join(
+    # SECOND TWEAK - Let's get the CAPITAL CITY information into the final result.
+    countries_continents, 
+    join_by(
+      Country == country_name)) |> 
+  select(
+    # Select what we need to see
+    Country, capital, Gender, total, perc_total) |> 
+  arrange(desc(total)) # And order the results by number of individuals
 ```
+From the data, we can see that India and the United States - with its' capital cities as New Delhi and Washington respectively - is leading the pack, with 28 of the males and females identifying as in a relationship. This constitutes to approximately 65% and 88% of the total respondents by respective country.
 
 ### Question 7
 
@@ -177,4 +365,43 @@ We can see that its an almost equal split between the Female and the Male gender
 #| label: Question 7
 #| echo: true
 
+popular_social_media_results <- social_media_data |> 
+  select(
+    Country, Most_Used_Platform) |> 
+  summarise(
+    # Count the number of social media platform selected by respondents 
+    # by Country
+    total = n(),
+    .by = c(Country, Most_Used_Platform)) |> 
+  filter(
+    # Filter the most popular social media platform for each country
+    total == max(total), 
+    .by = Country) |> 
+  left_join(
+    # Let's get the continent information into the final result.
+    countries_continents, 
+    join_by(
+      Country == country_name)) |> 
+  select(
+    # Select what we need to see
+    continent, Country, Most_Used_Platform, total) |> 
+  arrange(desc(total)) # And order the results by number of individuals
+
+popular_social_media_results
 ```
+From this, we can see the most popular social media platform by country. India lists as having WhatsApp as the most popular from the respondents, with France and Italy reporting Instagram as their most popular. 
+
+We can further aggregate this result by continent to see which platform is the most popular.
+
+```{r} 
+popular_social_media_results |> 
+  summarise(
+    total = sum(total), 
+    .by = c(continent, Most_Used_Platform)
+  ) |> 
+  filter(
+    total == max(total), 
+    .by = continent)
+
+```
+In Europe, Instagram has a clear lead with over 80 European respondents claiming the social media platform is their most used. North America, Asia and Oceania report the same platform while South America has WhatsApp. Interestingly, Africa seems to have no preference, with almost all being just as popular as the other.
