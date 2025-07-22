@@ -2,10 +2,10 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/exploratory-analysis-social-media/index.html",
+      "/posts/intro-regex/index.html",
       "/posts/tidy-data/index.html",
-      "/posts/okr-support-innovation/index.html",
-      "/posts/post-with-code/index.html",
-      "/posts/welcome/index.html"
+      "/posts/okr-support-innovation/index.html"
     ]
   }
 ]

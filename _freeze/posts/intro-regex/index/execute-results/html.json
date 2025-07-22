@@ -1,0 +1,15 @@
+{
+  "hash": "74cd6a75a4316692a079232b6067f472",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Regex-ing in R\"\nauthor: \"Robert Muwanga\"\ndate: \"2025-05-30\"\ncategories: [data-cleaning]\ndraft: true\n---\n\n\n\n\n\n## What is Regex?\n\nRegular Expressions, often shortened as **Regex**, is a powerful concept in modern programming languages for manipulating strings. A single line of code implementing a regex pattern can save several lines of code, keeping the overall codebase concise and easily maintainable.\n\n## So what does it do?\n\nIt uses pattern matching to find \\[TBD\\]...\n\n## \\[Title\\]\n\nTBD\n\n## Conclusion\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

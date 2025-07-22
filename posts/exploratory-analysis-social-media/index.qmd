@@ -1,0 +1,180 @@
+---
+title: "Data Cleaning Series :: Exploring Social Media Addiction Data"
+author: "Robert Muwanga"
+date: "2025-07-22"
+categories: [data-cleaning, data-exploration]
+draft: true
+---
+
+```{r}
+#| label: setup
+#| include: false
+#| cache: false
+
+library(tidyverse)
+library(validate)
+```
+
+## Background to the Data Cleaning Series
+
+I was asked to teach a class on how to import, clean and transform data in R and as part of the training. We did several exercises to help re-enforce the basics and, given that it was well received, I decided to document these exercises in a series that I'm calling the **Data Cleaning Series**.
+
+It will also serve as a journal for me to refer to when (being human) I forget 😅.
+
+If you haven't done so yet I recommend you read my brief entry on [tidy data](https://rjmuwanga.netlify.app/posts/tidy-data/) as we shall endeavour to put our data in this format throughout the series.
+
+## About the dataset - Social Media Addiction Analysis
+
+For this exercise, we are leveraging on the Social Media Addiction dataset provided by [Anil Shamim](https://www.kaggle.com/datasets/adilshamim8/social-media-addiction-vs-relationships/data) from the Kaggle Platform.
+
+The data set is a set of anonymized records of students’ social media behaviors and related life outcomes, spanning multiple countries and background. Each row represents one student’s survey response, offering a cross‐sectional snapshot suitable for statistical analysis and machine‐learning applications.
+
+For full details of the dataset, I would encourage you to visit the site and view its Data Card.
+
+Make sure you download the data set and save it on your machine (you might need a free Kaggle account to get it).
+
+Let's import it in and do a bit of exploration to get to know it better:
+
+```{r}
+#| label: load_data
+social_media_data <- read_csv('Students_Social_Media_Addiction.csv')
+
+social_media_data
+```
+
+From the output, we notice that the dataset has 705 variables and 13 observations. Given that we have the Data Caard that outlines the expected values for each variable, we can validate the information to make sure that it conforms to what was expected:
+
+```{r}
+#| label: Validate Data
+#| echo: true
+
+# Let's build the validation engine based on the rules on the Data Card.
+validation_rules <- validator(
+  is_unique(Student_ID), 
+  Age > 0, 
+  Gender %in% c("Male", "Female"), 
+  Academic_Level %in% c("High School", "Undergraduate", "Graduate"), 
+  in_range(Avg_Daily_Usage_Hours, 0, 24),
+  Affects_Academic_Performance %in% c("Yes", "No"),
+  Sleep_Hours_Per_Night > 0,
+  in_range(Mental_Health_Score, 1, 10),
+  Relationship_Status %in% c("Single", "In Relationship", "Complicated"),
+  Conflicts_Over_Social_Media >= 0,
+  in_range(Addicted_Score, 1, 10),
+  is.character(Country), 
+  is.character(Most_Used_Platform)
+)
+
+# Let's validate and assess the output.
+confront(social_media_data, validation_rules)
+
+```
+
+From the output, it is clear that all the variables satisfy the set constraints. However, as a sanity check for Country and Most_Used_Platform, let's print out their unique values to see whether they are a good representation of what currently exists:
+
+```{r}
+#| label: Validate Country
+#| echo: true
+
+# Let's just view the unique value of the Country variable
+
+social_media_data |> 
+  select(Country) |> 
+  unique() |> 
+  pull()
+
+```
+
+```{r}
+#| label: Validate Most_Used_Platform
+#| echo: true
+
+# Let's just view the unique values of Most_Used_Platform variable
+
+social_media_data |> 
+  select(Most_Used_Platform) |> 
+  unique() |> 
+  pull()
+
+```
+
+We can see that both outputs seem reasonable. Additional data cleaning may be needed but we shall further clean as part of answering the questions.
+
+Let's proceed to answering the questions!
+
+### Question 1
+
+#### What is the total number of male and female students by country?
+
+```{r}
+#| label: Question 1
+#| echo: true
+
+social_media_data |> 
+  summarise(total = n(), .by = Gender) |> 
+  mutate(
+    perc_gender = round(
+      total / sum(total) * 100, 2))
+```
+
+We can see that its an almost equal split between the Female and the Male gender - 50.07% against 49.93% respectively.
+
+### Question 2
+
+#### Which social media platform is associated with affecting the largest number of students by Academic Level?
+
+```{r}
+#| label: Question 2
+#| echo: true
+
+```
+
+### Question 3
+
+#### Show a table of countries showing the average sleep of High School students ordered from the least amount of sleep to the most.
+
+```{r}
+#| label: Question 3
+#| echo: true
+
+```
+
+### Question 4
+
+#### Find the average addiction score for each country. Include the country's respective continent and order the table in descending order by the country's average addiction score
+
+```{r}
+#| label: Question 4
+#| echo: true
+
+```
+
+### Question 5
+
+#### Which gender per country and continent is the most lonely? Assume "being lonely" are those in a relationship status of "Single" and "Complicated".
+
+```{r}
+#| label: Question 5
+#| echo: true
+
+```
+
+### Question 6
+
+#### Which capital city (and country) has the most number of students "In Relationship"?
+
+```{r}
+#| label: Question 6
+#| echo: true
+
+```
+
+### Question 7
+
+#### Determine the most popular social media platform in each country and continent
+
+```{r}
+#| label: Question 7
+#| echo: true
+
+```
