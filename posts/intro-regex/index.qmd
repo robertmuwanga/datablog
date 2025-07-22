@@ -26,14 +26,10 @@ Regular Expressions, often shortened as **Regex**, is a powerful concept in mode
 
 ## So what does it do?
 
-<<<<<<< HEAD
-It uses pattern matching to find \[TBD\]...
+It uses pattern matching to find TBD...
 
-## \[Title\]
+## Title
 
 TBD
-=======
-It uses pattern matching to find...
->>>>>>> 5f5e500f48b3ec108deae015b895118b9d0c4125
 
 ## Conclusion
