@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/exploratory-analysis-social-media/index.html",
       "/posts/tidy-data/index.html",
       "/posts/okr-support-innovation/index.html"
     ]

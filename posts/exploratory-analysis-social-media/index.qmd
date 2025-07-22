@@ -3,7 +3,7 @@ title: "Data Cleaning Series :: Exploring Social Media Addiction Data"
 author: "Robert Muwanga"
 date: "2025-07-22"
 categories: [data-cleaning, data-exploration]
-draft: true
+draft: false
 ---
 
 ```{r}
@@ -355,6 +355,7 @@ social_media_data |>
     Country, capital, Gender, total, perc_total) |> 
   arrange(desc(total)) # And order the results by number of individuals
 ```
+
 From the data, we can see that India and the United States - with its' capital cities as New Delhi and Washington respectively - is leading the pack, with 28 of the males and females identifying as in a relationship. This constitutes to approximately 65% and 88% of the total respondents by respective country.
 
 ### Question 7
@@ -389,11 +390,12 @@ popular_social_media_results <- social_media_data |>
 
 popular_social_media_results
 ```
-From this, we can see the most popular social media platform by country. India lists as having WhatsApp as the most popular from the respondents, with France and Italy reporting Instagram as their most popular. 
+
+From this, we can see the most popular social media platform by country. India lists as having WhatsApp as the most popular from the respondents, with France and Italy reporting Instagram as their most popular.
 
 We can further aggregate this result by continent to see which platform is the most popular.
 
-```{r} 
+```{r}
 popular_social_media_results |> 
   summarise(
     total = sum(total), 
@@ -404,4 +406,5 @@ popular_social_media_results |>
     .by = continent)
 
 ```
+
 In Europe, Instagram has a clear lead with over 80 European respondents claiming the social media platform is their most used. North America, Asia and Oceania report the same platform while South America has WhatsApp. Interestingly, Africa seems to have no preference, with almost all being just as popular as the other.
