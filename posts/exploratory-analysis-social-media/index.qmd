@@ -17,6 +17,8 @@ library(validate)
 
 ## Background to the Data Cleaning Series
 
+![](data-cleaning.png){fig-alt="Trying to clean data with soap" fig-align="center" width="60%"}
+
 I was asked to teach a class on how to import, clean and transform data in R and as part of the training. We did several exercises to help re-enforce the basics and, given that it was well received, I decided to document these exercises in a series that I'm calling the **Data Cleaning Series**.
 
 It will also serve as a journal for me to refer to when (being human) I forget 😅.
